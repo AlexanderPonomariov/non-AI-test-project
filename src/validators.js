@@ -5,7 +5,7 @@ const HAS_AT_LEAST_ONE_SPECIAL_CHARACTER = '(?=.*[!\\"#$%&\'()*+,-./:;<=>?@[\\\\
 const HAS_MAX_LENGTH = '(?=^.{0,_maxLength_}$)'
 const DOESNT_HAVE_SPACES_TABS_NEW_LINES = '(?=^\\S*$)'
 
-export const validate = (string, maxLength) => {
+export const validate = (string, maxLength = 50) => {
   const regExp = HAS_AT_LEAST_ONE_DIGIT
     + HAS_AT_LEAST_ONE_LOWERCASE_LETTER
     + HAS_AT_LEAST_ONE_UPPERCASE_LETTER
