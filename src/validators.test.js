@@ -15,6 +15,11 @@ describe('Validation function', () => {
     expect(validate("Abc123! ")).toBe(false);
   });
 
+  test('Should\'t have special characters not from the list', () => {
+    expect(validate("Abc123±")).toBe(false);
+    expect(validate("Abc123§")).toBe(false);
+  });
+
   test('Should have at least one uppercase letter', () => {
     expect(validate("abc123!")).toBe(false);
   });
