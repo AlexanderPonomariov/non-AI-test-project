@@ -9,30 +9,36 @@ describe('Validation function', () => {
     expect(validate("Abc123!", 3)).toBe(false);
   });
 
-  test('Should\'t have excess whitespace characters', () => {
+  test('Should\'t contain excess whitespace characters', () => {
     expect(validate("Abc 123!")).toBe(false);
     expect(validate(" Abc123!")).toBe(false);
     expect(validate("Abc123! ")).toBe(false);
+    expect(validate("     ")).toBe(false);
   });
 
-  test('Should\'t have special characters not from the list', () => {
+  test('Should\'t contain tabs or newline', () => {
+    expect(validate("Abc\t123!")).toBe(false);
+    expect(validate("Abc\n123!")).toBe(false);
+  });
+
+  test('Should\'t contain special characters not from the list', () => {
     expect(validate("Abc123±")).toBe(false);
     expect(validate("Abc123§")).toBe(false);
   });
 
-  test('Should have at least one uppercase letter', () => {
+  test('Should contain at least one uppercase letter', () => {
     expect(validate("abc123!")).toBe(false);
   });
 
-  test('Should have at least one lowercase letter', () => {
+  test('Should contain at least one lowercase letter', () => {
     expect(validate("ABC123!")).toBe(false);
   });
 
-  test('Should have at least one digit', () => {
+  test('Should contain at least one digit', () => {
     expect(validate("Abcdefgh!")).toBe(false);
   });
 
-  test('Should have at least one special character', () => {
+  test('Should contain at least one special character', () => {
     expect(validate("Abc12345")).toBe(false);
   });
 });
